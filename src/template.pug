@@ -1,0 +1,131 @@
+- console.log('========================= global=', global)
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title
+      block title
+        | ECMWF | #{page.title}
+    if page.scripts
+      each i in page.scripts
+        script(src='#{i}')
+  body.not-logged-in.fullscreen
+    - var is_prod = process.env.NODE_ENV == 'prod'
+    .inner-body
+      .menu-collapse-overlay
+      header#header
+        nav.navbar.navbar-inverse.navbar-fixed-top
+          div(class= django ? '{{ containerclass }}' : (page.fluid ? 'container-fluid' : 'container'))
+            .navbar-header
+              button#toggle-user.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-user', aria-expanded='false', aria-controls='navbar-user')
+                .user
+              //button#toggle-search.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-search', aria-expanded='false', aria-controls='navbar-search')
+              //  i.fa.fa-search(aria-hidden='true')
+              button#toggle-menu.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-menu', aria-expanded='false', aria-controls='navbar-menu')
+                .bars
+              a#header-logo.navbar-brand(href='//www.ecmwf.int')
+            //- User menu.
+            #navbar-user.header-menu.collapse.navbar-collapse.navbar-right(aria-expanded='false')
+              ul#header-user.nav.navbar-nav
+                li.hidden-xs
+                  a(href='#{header.contact.href}')
+                    i.fa.fa-pencil(aria-hidden='true')
+                    | #{header.contact.name}
+                li
+                  // TODO use class instead of style
+                  - var style = (django || user.is_authenticated) ? '' : 'display:none;'
+                  .btn-group(style=style)
+                    a.navbar-btn.btn.btn-link.dropdown-toggle.hidden-xs(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                      i.fa.fa-user-circle(aria-hidden='true')
+                      span.user-name #{user.name}
+                      span.caret
+                    ul.dropdown-menu
+                      each dropdown in header.user.dropdown
+                        if (dropdown.divider)
+                          li.divider
+                        else
+                          li
+                            a(href='#{dropdown.href}') #{dropdown.name}
+                  - style = user.is_authenticated ? 'display:none' : ''
+                  a(href=auth.login style=style)
+                    i.fa.fa-sign-in(aria-hidden='true')
+                    | Log In
+            //- Search.
+            //- #navbar-search.header-menu.collapse.navbar-collapse.navbar-right(aria-expanded='false')
+            //-   form#header-search.navbar-form
+            //-     .input-group
+            //-       input.form-control.input-sm(type='text', placeholder='Search site')
+            //-       span.input-group-btn
+            //-         button.btn.btn-default.btn-sm(type='button')
+            //-           i.fa.fa-search(aria-hidden='true')
+            //- .row.hidden-xs
+            //-   hr
+            //- Main menu.
+            #navbar-menu.header-menu.collapse(aria-expanded='false')
+              ul#header-menu.nav.navbar-nav
+                each menu, i in header.main.menu
+                  li(class = i == 0 ? "hidden-xs" : "")
+                    a(href='#{menu.href}') #{menu.name}
+      //- Apps menu.
+      if appmenu.main
+       #app-menu
+        div(class= django ? '{{ containerclass }}' : (page.fluid ? 'container-fluid' : 'container'))
+          .row
+            .col-xs-9.col-sm-9
+              ul#main-menu
+                li
+                 .btn-group
+                if appmenu.main.menu
+                  each menu, i in appmenu.main.menu
+                    if (menu.dropdown)
+                      li
+                        .btn-group
+                          a.btn.btn-link.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false')
+                            | #{menu.name}
+                            span.caret
+                          ul.dropdown-menu.dropdown-menu-small
+                            // TODO support divider in dropdown
+                            each dropdown in menu.dropdown
+                              if (dropdown.divider)
+                                li.divider
+                              else
+                                li
+                                  a(href='#{dropdown.href}') #{dropdown.name}
+                    else
+                      li
+                        .btn-group
+                          a.btn(href='#{menu.href}') #{menu.name}
+            .col-xs-3.col-sm-3.text-right-xs.text-right-sm.text-right-md.text-right-lg
+              ul#help-menu
+                if appmenu.help
+                  li
+                    .btn-group
+                      a.btn.btn-link.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false')
+                        | Help
+                        span.caret
+                      ul.dropdown-menu.pull-right
+                        each dropdown in appmenu.help.menu.dropdown
+                          if (dropdown.divider)
+                            li.divider
+                          else
+                            li
+                              a(href='#{dropdown.href}') #{dropdown.name}
+      main#main
+        block main
+          div(class= (page.fluid ? 'container-fluid' : 'container'))
+            block content
+      //- Main footer.
+      footer#global-footer
+        div(class= django ? '{{ containerclass }}' : page.fluid ? 'container-fluid' : 'container')
+          .row
+            .col-xs-2.col-sm-6.col-lg-4.text-left-xs.text-left-sm.text-left-md.text-left-lg
+              p.copyright.hidden-xs &copy; European Centre for Medium-Range Weather Forecasts
+              p.copyright.visible-xs &copy; ECMWF
+            .col-xs-10.col-sm-6.col-lg-4.col-lg-push-4.text-right-xs.text-right-sm.text-right-md.text-right-lg
+              ul.legal-menu
+                each entry, i in footer.global.menu
+                  li
+                    a(href='#{entry.href}') #{entry.name}
+            .col-md-12.col-lg-4.col-lg-pull-4.text-center-xs.text-center-sm.text-center-md.text-center-lg

@@ -1,0 +1,257 @@
+
+*                                                 { box-sizing: border-box; }
+a                                                 { color: #337ab7; text-decoration: none; }
+ul                                                { margin: 0; padding: 0; }
+li                                                { list-style: none; }
+p { margin: 0 0 10px; }
+h2, h3                                            { font-weight: 400; margin: 0; }
+h2:first-child                                    { margin-top: 0; }
+
+.btn.primary, .ui-button.primary                  { background-color: #676767; color: #fff; }
+
+input[type='text']                                { border: 1px solid #ccc; padding: 4px 6px; font-size: inherit; }
+input:disabled                                    { background-color: #f3f3f3; }
+input:focus                                       { border-color: #cdf; }
+
+/* position:relative is needed for footer */
+html                                              { height: 100%; position: relative; margin: 0; padding: 0; }
+html body                                         { margin-bottom: 50px; }
+body                                              { margin: 0; background-color: #fff; color: #333333; font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 13px; line-height: 1.42857; }
+.text-content                                     { font-size: 14px; margin: 20px 0; }
+
+body { height: calc(100% - 50px) !important; } /* TODO container.single is setting height - this messes up the footer */
+
+header                                            { background-color: #000; }
+.navbar                                           { min-height: 47px; }
+@media (min-width: 769px){
+.navbar-header                                    { float: left; }
+}
+@media (max-width: 768px){
+.navbar-header                                    { margin-right: -15px; }
+}
+
+#header-logo                                      { float: left; height: 47px; margin: 0 15px 0 0; width: 140px; background: url(images/ecmwf_logo.svg) 0 11px no-repeat; }
+.navbar-nav                                       { margin: 0; }
+.navbar-brand                                     { float: left; font-size: 18px; height: 47px; line-height: 20px; padding: 13.5px 15px; }
+.navbar-right                                     { float: right; margin-right: -15px; }
+.navbar-right ~ .navbar-right                     { margin-right: 0; }
+.nav                                              { list-style: outside none none; margin-bottom: 0; padding-left: 0; }
+#navbar-user .navbar-nav > li                     { float: left; }
+.nav > li                                         { display: block; position: relative; }
+#navbar-menu                                      { clear: both; }
+#header nav #header-user a                        { background-color: transparent; border: medium none; }
+#header nav #navbar-user a { border: medium none; color: #fff; font-size: 14px; }
+#header nav #navbar-user .btn-group > a           { padding: 13.5px 15px; }
+.navbar-inverse .navbar-nav > li > a              { color: #fff; }
+.navbar-nav > li > a                              { line-height: 20px; }
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus                        { color: #fff; }
+.nav > li > a                                     { display: block; padding: 10px 15px; position: relative; }
+.navbar-nav > li > a                              { padding-bottom: 13.5px; padding-top: 13.5px; }
+#header a:hover, footer a:hover                   { text-decoration: underline; }
+
+#header nav .navbar-header #toggle-menu.navbar-toggle
+                                                  { display: inline-block; }
+#header nav .navbar-header .navbar-toggle         { color: #fff; font-size: 24px; height: 47px; margin: 0; padding: 0; transition: all 0.125s ease-in-out 0s; width: 47px; }
+@media (min-width: 769px){
+.navbar-toggle                                    { display: none; }
+}
+.navbar-toggle                                    { background-color: transparent; background-image: none; border: 1px solid transparent; border-radius: 0; float: right; margin-bottom: 6.5px; margin-right: 15px; margin-top: 6.5px; padding: 9px 10px; position: relative; }
+/* put the navbar in front of the black overlay */
+.navbar-fixed-top                                 { z-index: 49; position: relative; }
+
+#navbar-menu                                      { position: absolute; top: 47px; left: 0; right: 0; background-color: #000; padding-left: 30px; border-top: 1px solid #fff; }
+
+/* footer */
+
+footer#global-footer                              { bottom: -50px; height: 50px; position: absolute; }
+footer                                            { background-color: #000; padding: 15px 0 0; width: 100%; }
+footer#global-footer .copyright                   { color: #999; font-size: 13px; margin-bottom: 15px; padding: 0; white-space: nowrap; }
+footer#global-footer ul.legal-menu li a           { color: #fff; font-size: 13px; }
+footer#global-footer ul.legal-menu li             { float: left; }
+footer#global-footer ul.legal-menu                { float: right; font-weight: 300; margin-bottom: 15px; }
+footer ul                                         { margin: 0; padding: 0; }
+footer#global-footer ul.legal-menu li::after      { content: "|"; margin: 0 3px; }
+
+.text-right-sm { text-align: right; }
+.col-sm-6 { width: 50%; }
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 { float: left; }
+
+/* search */
+
+/*
+#header nav #navbar-search #header-search         { border-color: transparent; box-shadow: none; margin-top: 9px; }
+.navbar-form                                      { border: 0 none; box-shadow: none; margin-left: 0; margin-right: 0; padding-bottom: 0; padding-top: 0; width: auto; }
+#header nav #navbar-search #header-search .input-group * { border-color: transparent; }
+.navbar-form .input-group                         { display: inline-table; vertical-align: middle; }
+.form-control                                     { box-shadow: none; }
+.input-sm { border-radius: 0; font-size: 12px; height: 30px; line-height: 1.5; padding: 5px 10px; }
+
+button                                            { padding: 0; }*/ /* for search button - not very generic, may need to be changed */
+/*
+#header-search button { border: 0; }
+
+#navbar-search #header-search .input-group input  { background-color: #333; width: 110px; color: #555; font-size: 14px; font-style: italic; transition: all 0.25s ease-in-out 0s; }
+#navbar-search #header-search .input-group input:focus { background-color: #fff; width: 220px; }
+*/
+.btn-default                                      { background-color: #fff; border-color: #ccc; color: #333; }
+.btn                                              { -moz-user-select: none; background-image: none; border: 1px solid transparent; border-radius: 0; cursor: pointer; display: inline-block; font-size: 14px; font-weight: normal; line-height: 1.42857; margin-bottom: 0; /*padding: 6px 12px;*/ text-align: center; vertical-align: middle; white-space: nowrap; }
+
+.navbar-collapse.collapse                         { height: auto !important; overflow: visible !important; padding-bottom: 0; }
+@media (min-width: 769px) {
+.navbar-collapse.collapse                         { display: block !important; }
+}
+
+button .bars                                      { width: 24px; height: 24px; background: url(images/bars.svg) no-repeat; background-size: 22px; background-position: 1px 1px; }
+.navbar-header button > div                       { margin-left: 8px; }
+.navbar-header button                             { background-color: #000; outline: none; border: 0; }
+.navbar-header button.active                      { filter: invert(100%); }
+/* TODO make background image smaller by 2px 1px */
+/* TODO hover effect on search button */
+/* TODO change breakpoint for header menu so that small view only engages at 480px */
+/*
+button .search                                    { width: 27px; height: 28px; background: url(images/search.png) -3px -1px; border: 0; padding: 0; }
+*/
+@media (max-width: 768px) {
+/*
+#toggle-search .search                            { background: url(images/icon-search-black-28.png); }
+*/
+#toggle-user > div                                { background: url(images/icon-person-black-28.png);  width: 28px; height: 28px;}
+.navbar-toggle                                    { float: right; }
+#navbar-user.collapse.in                          { float: none; margin-top: 60px; } /* TODO why has it been needed to deviate from the original here? */
+#navbar-user.collapse.in li a                     { padding-left: 0; }
+}
+
+/* generic bootstrap */
+
+/* breakpoints: xs: 480px, sm: 768px, md: 992px, lg: 1200px */
+
+.container-fluid                                  { margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; }
+.collapse                                         { display: none; }
+
+.text-right-md                                    { text-align: right; }
+
+.col-sm-3                                         { width: 25%; }
+.col-sm-9                                         { width: 75%; }
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 { float: left; }
+.container-fluid::after                           { clear: both; }
+.container-fluid::before, .container-fluid::after { content: " "; display: table; }
+
+.visible-xs-block                                 { display: none; }
+.visible-xs                                       { display: none !important; }
+@media (max-width: 768px) {
+.visible-xs-block                                 { display: block; }
+.visible-xs                                       { display: block !important; }
+.hidden-xs                                        { display: none !important; }
+}
+
+button, html input[type="button"],
+input[type="reset"], input[type="submit"]         { cursor: pointer; }
+
+#header nav #navbar-user .btn-group > a[aria-expanded="true"]
+                                                  { background-color: #fff; color: #333; }
+
+@media (max-width: 768px) {
+#header nav #navbar-user .btn-group .dropdown-menu { background-color: transparent; display: block; float: none; margin-top: 0; position: static; width: 100%; }
+}
+@media (min-width: 769px) {
+#header #navbar-user .dropdown-menu li a          { color: #333; }
+}
+
+/* bootstrap collapse plugin */
+
+.collapse.in                                      { display: block; }
+
+/* ecmwf menu */
+
+#navbar-menu > ul                                 { text-align: center; width: 100%; }
+#header nav #navbar-menu #header-menu li          { display: inline-block; }
+#header nav #navbar-menu #header-menu li a        { border-bottom: 5px solid transparent; border-top: 2px solid transparent; font-size: 20px; padding: 20px; }
+.menu-collapse-overlay                            { background-color: #000; display: none; height: 100%; left: 0; opacity: 0.5; position: fixed; top: 0; width: 100%; z-index: 48; }
+
+/* app menu */
+
+#app-menu                                         { background-color: #676767; }
+#app-menu ul#help-menu, #app-menu ul#main-menu    { margin: 0; padding: 0; }
+										/* temp hack to v-centre text */
+										#app-menu ul#help-menu, #app-menu ul#main-menu { margin-top: -1px; margin-bottom: 1px; }
+#app-menu ul#help-menu > li a,
+#app-menu ul#main-menu > li a                     { background-color: transparent; color: #e7e7e7; font-size: 14px; padding: 8px 15px; }
+#app-menu ul#help-menu > li,
+#app-menu ul#main-menu > li                       { display: inline-block; }
+.btn-group .dropdown-menu                         { border: medium none; margin: 0; }
+.pull-right                                       { float: right !important; }
+#app-menu div.container-fluid div.row div.col-xs-9.col-sm-9 #main-menu > li:first-child { margin-left: -14px; }
+html body #app-menu .row ul#help-menu             { margin-right: -15px; }
+.caret                                            { border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px dashed; display: inline-block; height: 0; margin-left: 2px; vertical-align: middle; width: 0; }
+.btn-group, .btn-group-vertical                   { display: inline-block; position: relative; vertical-align: middle; }
+
+.dropdown-menu                                    { background-clip: padding-box; background-color: #fff; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 0; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+                                                    display: none; float: left; /*font-size: 14px;*/ left: 0; list-style: outside none none; margin: 2px 0 0; min-width: 160px; padding: 5px 0; position: absolute;
+                                                    text-align: left; top: 100%; z-index: 1000;
+                                                  }
+#app-menu #help-menu .dropdown-menu               { border-top-right-radius: 0; }
+#app-menu .dropdown-menu                          { border-radius: 2px; }
+.btn-group .dropdown-menu                         { border: medium none; margin: 0; }
+.open > .dropdown-menu                            { display: block; }
+.dropdown-menu.pull-right                         { left: auto; right: 0; }
+.pull-right                                       { float: right !important; }
+.dropdown-menu > li > a                           { clear: both; color: #333333; display: block; font-weight: normal; line-height: 1.42857; padding: 3px 20px; white-space: nowrap; }
+.dropdown-menu .divider                           { height: 1px; }
+@media (max-width: 768px) {
+.dropdown-menu .divider                           { background: #666; margin: 5px 0; }
+}
+@media (min-width: 769px) {
+.dropdown-menu .divider                           { background: #eee; margin: 5px 15px; }
+}
+.navbar-right .dropdown-menu                      { left: auto; right: 0; }
+
+#main-menu                                        { min-height: 38px; } /* ensure space is allocated even when menu is empty */
+#app-menu ul#help-menu > li .btn-group > a[aria-expanded="true"],
+#app-menu ul#main-menu > li .btn-group > a[aria-expanded="true"]
+                                                  { background-color: #fff; color: #000; }
+#app-menu ul#main-menu > li .btn-group.open a,
+#app-menu ul#help-menu > li .btn-group.open a     { color: #000; }
+#app-menu .dropdown-menu li:hover                 { background-color: #f7f7f7; }
+
+.text-overlay                                     { position: absolute; background-color: rgba(255, 255, 255, 0.7); padding: 0.3em; box-sizing: content-box; }
+
+.parameter-control .parameter-selector,
+.parameter-selector.ui-button                     { color: #fff; border: 0; border-radius: 2px; background: #676767; }
+.parameter-selector:hover                         { background: #7c7c7c; }
+.parameter-selector.ui-state-hover span.ui-button-text
+                                                  { color: #fff; }
+.parameter-location,
+.parameter-selector .ui-selectmenu-button         { height: 28px; padding: 0; margin: 0; }
+
+.chart-column .parameter-selector.ui-button-text-icon-secondary .ui-button-text,
+.chart-column .parameter-selector .ui-button-text,
+.chart-column .parameter-selector .ui-selectmenu-text
+                                                  { padding-top: 4px; padding-bottom: 4px; }
+.bar-2 .ui-button-icon-only .ui-button-text       { padding: 4px; } /* ensure rhs buttons are same height as the parameter controls */
+
+.date-select,
+.ec-toolbar .sprite-outer,
+.ec-toolbar .sprite-outer.ui-state-disabled:hover { margin: 1px; border-radius: 1px; background-color: #676767; }
+.ec-toolbar .sprite-outer:hover                   { background: #838383; }
+
+.thumbnail-list-filter                            { border: solid 1px #aaa; padding: 2px 0; max-width: 400px; }
+.thumbnail-list-filter                            { margin: 16px 0 12px; }
+.thumbnail-list-filter input                      { padding: 2px 0 2px 8px; border: 0; margin-left: 1px; box-sizing: border-box; }
+.thumbnail-list-filter input:focus                { outline: 0; }
+.thumbnail-list-filter .search-icon               { margin: 2px 4px 0 0; }
+
+.ui-pnotify                                       { z-index: 495; }
+
+body > .ui-selectmenu-menu                        { z-index: 2001; } /* above help dialogues */
+
+.ui-icon                                          { background-image: url(images/ui-icons_222222_256x240.png); }
+
+/* added for vbutton */
+.ui-button.disabled                               { opacity: 0.4; }
+
+/* temporary for ui-dialog - use of ui-dialog is deprecated */
+.ui-dialog-title                                  { font-size: 20px; }
+.ui-dialog .form-buttons                          { padding-top: 8px; margin-top: 8px; text-align: right; }
+.ui-dialog .form-buttons input                    { padding: 5px; background-color: #eee; border: 0; margin-left: 4px; }
+.ui-dialog .form-buttons input.primary            { background-color: #676767; color: #fff; }

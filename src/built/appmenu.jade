@@ -1,0 +1,58 @@
+//- Apps menu.
+if appmenu.main
+ #app-menu
+  div(class= django ? '{{ containerclass }}' : (page.fluid ? 'container-fluid' : 'container'))
+    .row
+      .col-xs-9.col-sm-9
+        ul#main-menu
+          //{% if apptitle %}
+          li
+           .btn-group
+             //{{ apptitle }}
+          //{% endif %}
+          if appmenu.main.menu
+            //{% for i in appmenu.main %}
+            each menu, i in appmenu.main.menu
+              if (menu.dropdown)
+                //{% if i.dropdown %}
+                li
+                  .btn-group
+                    a.btn.btn-link.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false')
+                      | #{menu.name}
+                      span.caret
+                    ul.dropdown-menu.dropdown-menu-small
+                      // TODO support divider in dropdown
+                      each dropdown in menu.dropdown
+                        //{% for dropdown in i.dropdown %}
+                        if (dropdown.divider)
+                          li.divider
+                        else
+                          li
+                            a(href='#{dropdown.href}') #{dropdown.name}
+                        //{% endfor %}
+                //{% else %}
+              else
+                li
+                  .btn-group
+                    a.btn(href='#{menu.href}') #{menu.name}
+                //{% endif %}
+            //{% endfor %}
+      //{% if appmenu.help.menu.dropdown %}
+      .col-xs-3.col-sm-3.text-right-xs.text-right-sm.text-right-md.text-right-lg
+        ul#help-menu
+          if appmenu.help
+            li
+              .btn-group
+                a.btn.btn-link.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false')
+                  | Help
+                  span.caret
+                ul.dropdown-menu.pull-right
+                  //{% for dropdown in appmenu.help.menu.dropdown %}
+                  each dropdown in appmenu.help.menu.dropdown
+                    if (dropdown.divider)
+                      li.divider
+                    else
+                      li
+                        a(href='#{dropdown.href}') #{dropdown.name}
+                  //{% endfor %}
+      //{% endif %}

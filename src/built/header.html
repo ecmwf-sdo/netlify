@@ -1,0 +1,45 @@
+      <header id="header">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button id="toggle-user" type="button" data-toggle="collapse" data-target="#navbar-user" aria-expanded="false" aria-controls="navbar-user" class="navbar-toggle collapsed">
+                <div class="user"></div>
+              </button>
+              
+              
+              <button id="toggle-menu" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false" aria-controls="navbar-menu" class="navbar-toggle collapsed">
+                <div class="bars"></div>
+              </button><a id="header-logo" href="//www.ecmwf.int" class="navbar-brand"></a>
+            </div>
+            <div id="navbar-user" aria-expanded="false" class="header-menu collapse navbar-collapse navbar-right">
+              <ul id="header-user" class="nav navbar-nav">
+                <li class="hidden-xs"><a href="//www.ecmwf.int/en/about/contact-us"><i aria-hidden="true" class="fa fa-pencil"></i>Contact</a></li>
+                <li>
+                  
+                  
+                  <div style="display:none;" class="btn-group"><a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="navbar-btn btn btn-link dropdown-toggle hidden-xs"><i aria-hidden="true" class="fa fa-user-circle"></i><span class="user-name"></span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="//www.ecmwf.int/en/forecasts/dashboard">Chart Dashboard</a></li>
+                      <li class="divider"></li>
+                      <li><a href="/auth/logout/">Log Out</a></li>
+                    </ul>
+                  </div>
+                  <a href="/auth/login/" style=""><i aria-hidden="true" class="fa fa-sign-in"></i>Log In</a>
+                  
+                </li>
+              </ul>
+            </div>
+            <div id="navbar-menu" aria-expanded="false" class="header-menu collapse">
+              <ul id="header-menu" class="nav navbar-nav">
+                <li class="hidden-xs"><a href="//www.ecmwf.int/">Home</a></li>
+                <li><a href="//www.ecmwf.int/en/about">About</a></li>
+                <li><a href="//www.ecmwf.int/en/forecasts">Forecasts</a></li>
+                <li><a href="//www.ecmwf.int/en/computing">Computing</a></li>
+                <li><a href="//www.ecmwf.int/en/research">Research</a></li>
+                <li><a href="//www.ecmwf.int/en/learning">Learning</a></li>
+                <li><a href="//www.ecmwf.int/search/elibrary">Library</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>

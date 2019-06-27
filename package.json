@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "./node_modules/.bin/netlify deploy",
+    "template": "ecmwf-template",
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "node prebuild && react-static build",
+    "serve": "serve dist -p 3000"
   },
   "repository": {
     "type": "git",
@@ -14,9 +18,20 @@
   "author": "ECMWF (Tim Orford)",
   "license": "Apache-2.0",
   "dependencies": {
-    "netlify-cli": "^2.11.23"
+    "axios": "^0.18.0",
+    "json-loader": "^0.5.7",
+    "netlify-cli": "^2.11.23",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-hot-loader": "^4.3.12",
+    "react-redux": "^5.1.1",
+    "react-static": "^7.1.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "react-static": "^7.1.0"
+  },
+  "otherDependencies": {
+    "pug-as-jsx-loader": "^1.0.66"
   }
 }

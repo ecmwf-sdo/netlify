@@ -1,0 +1,57 @@
+//- Header.
+header#header
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    div(class= django ? '{{ containerclass }}' : (page.fluid ? 'container-fluid' : 'container'))
+      .navbar-header
+        button#toggle-user.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-user', aria-expanded='false', aria-controls='navbar-user')
+          .user
+        //button#toggle-search.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-search', aria-expanded='false', aria-controls='navbar-search')
+        //  i.fa.fa-search(aria-hidden='true')
+        button#toggle-menu.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-menu', aria-expanded='false', aria-controls='navbar-menu')
+          .bars
+        a#header-logo.navbar-brand(href='//www.ecmwf.int')
+      //- User menu.
+      #navbar-user.header-menu.collapse.navbar-collapse.navbar-right(aria-expanded='false')
+        ul#header-user.nav.navbar-nav
+          li.hidden-xs
+            a(href='#{header.contact.href}')
+              i.fa.fa-pencil(aria-hidden='true')
+              | #{header.contact.name}
+          li
+            // TODO use class instead of style
+            //{% if user.is_authenticated %}
+            - var style = (django || user.is_authenticated) ? '' : 'display:none;'
+            .btn-group(style=style)
+              a.navbar-btn.btn.btn-link.dropdown-toggle.hidden-xs(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                i.fa.fa-user-circle(aria-hidden='true')
+                span.user-name #{user.name}
+                span.caret
+              ul.dropdown-menu
+                each dropdown in header.user.dropdown
+                  if (dropdown.divider)
+                    li.divider
+                  else
+                    li
+                      a(href='#{dropdown.href}') #{dropdown.name}
+            //{% else %}
+            - style = user.is_authenticated ? 'display:none' : ''
+            a(href=auth.login style=style)
+              i.fa.fa-sign-in(aria-hidden='true')
+              | Log In
+            //{% endif %}
+      //- Search.
+      //- #navbar-search.header-menu.collapse.navbar-collapse.navbar-right(aria-expanded='false')
+      //-   form#header-search.navbar-form
+      //-     .input-group
+      //-       input.form-control.input-sm(type='text', placeholder='Search site')
+      //-       span.input-group-btn
+      //-         button.btn.btn-default.btn-sm(type='button')
+      //-           i.fa.fa-search(aria-hidden='true')
+      //- .row.hidden-xs
+      //-   hr
+      //- Main menu.
+      #navbar-menu.header-menu.collapse(aria-expanded='false')
+        ul#header-menu.nav.navbar-nav
+          each menu, i in header.main.menu
+            li(class = i == 0 ? "hidden-xs" : "")
+              a(href='#{menu.href}') #{menu.name}
