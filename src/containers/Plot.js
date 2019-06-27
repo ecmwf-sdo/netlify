@@ -3,10 +3,11 @@ import { withRouteData } from 'react-static'
 import { Link } from '@reach/router'
 //
 
+//      <Link to="/">{'<'} Back</Link>
 export default withRouteData(({item}) => (
   <div>
-    <p>
-      <Link to="/">{'<'} Back</Link>
+    <p style={{marginTop: '10px'}}>
+      <a href="/">{'<'} Back</a>
     </p>
     <h1>{item.title}</h1>
     <div className={`i-${item.id} big-chart`}>

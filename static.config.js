@@ -20,7 +20,7 @@ const plots = fs.readdirSync('plots')
 		title: make_title(f)
 	}))
 	.filter((f, i) => {
-		return i < 6
+		return i < 8
 	})
 
 export default {
