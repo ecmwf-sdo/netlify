@@ -20,7 +20,7 @@ export default withRouteData((data, b) => {
             const outer_class = 'i-' + item.id + ' item thumbnail-wrapper'
             const inner_class = 'thumbnail-img'
             return <div className={outer_class} key={item.id}>
-              <Link to={`/plot/${item.id}/`}>
+              <Link to={`/plot/${item.id}`}>
                 <div className="thumbnail">
                   <div name="s2s_anomaly_cawcr_2MTM" className={inner_class}></div>
                   <div className="title">{item.title}</div>

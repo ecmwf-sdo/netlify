@@ -52,8 +52,8 @@ export default pluginOptions => ({
 
 	},
 
-	/*
 	webpack: (currentWebpackConfig, state) => {
+		/*
 		currentWebpackConfig.mode = 'development'
 
 		// the pug loader must be _after_ the js loaders
@@ -67,8 +67,17 @@ export default pluginOptions => ({
 				}
 			]
 		})
+		*/
 
 		return currentWebpackConfig
+	},
+
+	afterExport: async state => {
+		var pngs = state.clientStats.assets.filter((v) => v.name.match(/png$/))
+		pngs.forEach(() => {
+			// TODO modify the html to replace the original img name with the correct asset path
+		})
+
+		return state
 	}
-	*/
 })

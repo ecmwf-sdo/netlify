@@ -6,28 +6,18 @@ function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-/*
-const posts = [
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "qui est esse",
-    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-  }
-]
-*/
+function make_title(f) {
+	var a = capitalizeFirstLetter(f.slice(0, 38).replace(/_/g, ' ').replace('ecmwf', 'ECMWF'))
+		.split(' ')
+	a.pop()
+	return a.join(' ')
+}
 
 const plots = fs.readdirSync('plots')
 	.map((f, i) => ({
 		id: i,
-		path: 'plots/' + f,
-		title: capitalizeFirstLetter(f.slice(0, 32).replace(/_/g, ' ').replace('ecmwf', 'ECMWF'))
+		path: '' + f,
+		title: make_title(f)
 	}))
 	.filter((f, i) => {
 		return i < 6
@@ -52,8 +42,8 @@ export default {
 			},
 			children: plots.map(item => ({
 				path: `/plot/${item.id}`,
-				component: 'src/containers/Post',
-				template: 'src/containers/Post',
+				component: 'src/containers/Plot',
+				template: 'src/containers/Plot',
 				getData: () => ({
 					item,
 				})
