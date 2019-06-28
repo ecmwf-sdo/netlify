@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "./node_modules/.bin/netlify deploy",
+    "publish": "git add plots/ && git ci -m \"Updated plots\" && git push && netlify watch",
     "watch": "netlify watch",
     "template": "ecmwf-template",
     "start": "react-static start",
