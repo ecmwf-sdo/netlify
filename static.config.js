@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 
 // note this gets run for each page !
 
@@ -7,10 +8,14 @@ function capitalizeFirstLetter(string) {
 }
 
 function make_title(f) {
-	var a = capitalizeFirstLetter(f.slice(0, 38).replace(/_/g, ' ').replace('ecmwf', 'ECMWF'))
+	var a = f.slice(0, 56)
+		.replace(/_/g, ' ')
+		.replace('ecmwf', 'ECMWF')
 		.split(' ')
+	a.shift()
+	a.shift()
 	a.pop()
-	return a.join(' ')
+	return capitalizeFirstLetter(a.join(' '))
 }
 
 const plots = fs.readdirSync('plots')
@@ -20,7 +25,7 @@ const plots = fs.readdirSync('plots')
 		title: make_title(f)
 	}))
 	.filter((f, i) => {
-		return i < 8
+		return i < 100
 	})
 
 export default {
@@ -50,5 +55,14 @@ export default {
 			}))
 		}
 		]
-	}
+	},
+	plugins: [
+		[
+			require.resolve('react-static-plugin-source-filesystem'),
+			{
+				location: path.resolve('./src/pages'),
+			},
+		],
+		require.resolve('react-static-plugin-reach-router')
+	]
 }

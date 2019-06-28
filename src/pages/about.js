@@ -22,17 +22,22 @@ const CounterConnected = connect(
   })
 )(Counter)
 
+function counter() {
+  return (
+    <div>
+      <h2>Here is a redux counter:</h2>
+      <CounterConnected />
+    </div>
+  )
+}
+
 // /////////////////////////////////////////////////////////
 // Actual container
 const About = () => (
   <div>
-    <h1>This is what we're all about.</h1>
+    <h1>This is the help page</h1>
     <p>
-      React, static sites, performance, speed. It's the stuff that makes us
-      tick.
     </p>
-    <h2>Here is a redux counter:</h2>
-    <CounterConnected />
   </div>
 )
 

@@ -11,10 +11,10 @@ export default withRouteData((data, b) => {
     })
     .map(k => data[k])
 
-  //            <Link to={`/plot/${item.id}`} rel="external">
   return (
     <div>
-      <h1>Diagnostics</h1>
+      <Link to={`/about`} className="help-link">Help</Link>
+      <h1>Diagnostics analysis anomalies</h1>
       <div className="catalogue-grid">
         <p>{items.length} matching items</p>
         <div className="grid-items thumbs">
@@ -22,12 +22,12 @@ export default withRouteData((data, b) => {
             const outer_class = 'i-' + item.id + ' item thumbnail-wrapper'
             const inner_class = 'thumbnail-img'
             return <div className={outer_class} key={item.id}>
-              <a href={`/plot/${item.id}`} rel="external">
+              <Link to={`/plot/${item.id}`} rel="external">
                 <div className="thumbnail">
                   <div name="s2s_anomaly_cawcr_2MTM" className={inner_class}></div>
                   <div className="title">{item.title}</div>
                 </div>
-              </a>
+              </Link>
             </div>
           })}
         </div>

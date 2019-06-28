@@ -9,11 +9,6 @@ export default withRouteData(({ posts }) => (
     <br />
     All charts:
     <ul>
-      {posts.map(post => (
-        <li key={post.id}>
-          <Link to={`/blog/post/${post.id}/`}>{post.title}</Link>
-        </li>
-      ))}
     </ul>
   </div>
 ))

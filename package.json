@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "./node_modules/.bin/netlify deploy",
+    "watch": "netlify watch",
     "template": "ecmwf-template",
     "start": "react-static start",
     "stage": "react-static build --staging",
@@ -19,13 +20,18 @@
   "license": "Apache-2.0",
   "dependencies": {
     "axios": "^0.18.0",
+    "install": "^0.12.2",
     "json-loader": "^0.5.7",
+    "mousetrap": "^1.6.3",
     "netlify-cli": "^2.11.23",
+    "npm": "^6.9.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
     "react-redux": "^5.1.1",
     "react-static": "^7.1.0",
+    "react-static-plugin-reach-router": "^7.0.10",
+    "react-static-plugin-source-filesystem": "^7.1.0",
     "redux": "^4.0.1"
   },
   "devDependencies": {
